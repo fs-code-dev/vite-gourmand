@@ -1,26 +1,27 @@
 import { menus } from "./menus-data.js";
+
 function displayMenus(list) {
   const container = document.getElementById("menusContainer");
-  if (!container) return;
+  if (!container) return; 
 
   container.innerHTML = list.map(menu => `
     <div class="col-md-4 mb-4">
-      <div class="card h-100 shadow-sm">
-        <img src="${menu.image}" class="card-img-top menu-img" alt="${menu.title}">
+      <div class="card h-100 shadow-sm border-0 border-bottom border-4 border-primary">
+        <img src="${menu.image}" class="card-img-top menu-img" alt="${menu.title}" style="height: 200px; object-fit: cover;">
         <div class="card-body d-flex flex-column">
-          <h5>${menu.title}</h5>
-          <p class="text-muted">${menu.description}</p>
+          <h5 class="fw-bold text-dark">${menu.title}</h5>
+          <p class="text-muted small">${menu.description}</p>
 
           <div class="mt-auto">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mb-3">
               <span class="badge bg-secondary">${menu.theme}</span>
               <span class="badge bg-success">${menu.regime}</span>
             </div>
 
-            <div class="d-flex justify-content-between mt-2">
-              <strong>${menu.price} €</strong>
+            <div class="d-flex justify-content-between align-items-center mt-2 border-top pt-3">
+              <strong class="fs-5">${menu.price} €</strong>
               <button onclick="goToDetail(${menu.id})" class="btn btn-primary btn-sm">
-                Détail
+                Voir le détail
               </button>
             </div>
           </div>
@@ -48,22 +49,35 @@ function applyFilters() {
   displayMenus(filtered);
 }
 
+// Fonction de navigation
 function goToDetail(id) {
   window.history.pushState({}, "", `/menusdetail?id=${id}`);
   window.dispatchEvent(new PopStateEvent("popstate"));
 }
 
-window.goToDetail = goToDetail;
+window.goToDetail = goToDetail; 
 
-document.getElementById("applyFilters")?.addEventListener("click", applyFilters);
+document.addEventListener("click", function(e) {
+  
+  if (e.target && e.target.id === "applyFilters") {
+    e.preventDefault();
+    applyFilters();
+  }
+  
 
-document.getElementById("resetFilters")?.addEventListener("click", () => {
-  ["prixMax", "prixMin", "theme", "regime", "nbMin"].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.value = "";
-  });
+  if (e.target && e.target.id === "resetFilters") {
+    e.preventDefault();
+    
+    // On vide tous les champs
+    ["prixMax", "prixMin", "theme", "regime", "nbMin"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = "";
+    });
 
-  displayMenus(menus);
+    displayMenus(menus);
+  }
 });
 
-displayMenus(menus);
+setTimeout(() => {
+  displayMenus(menus);
+}, 100);

@@ -1,0 +1,132 @@
+<div class="hero-scene text-center text-white py-5 mb-5">
+  <div class="hero-scene-content">
+    <h1 class="fw-bold text-white">Finaliser ma commande</h1>
+  </div>
+</div>
+
+<div class="container pb-5">
+  <div class="row g-5">
+
+    <!-- COLONNE GAUCHE : LE FORMULAIRE -->
+    <div class="col-lg-7">
+      
+      <!-- Section 1 : Informations Client -->
+      <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+          <h4 class="card-title mb-4"> <i class="bi bi-person"></i> Mes coordonnées</h4>
+          <p class="text-muted small mb-3">Ces informations sont pré-remplies depuis votre compte.</p>
+          
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="firstname" class="form-label">Prénom</label>
+              <input type="text" class="form-control" id="firstname" disabled readonly>
+            </div>
+            <div class="col-md-6">
+              <label for="lastname" class="form-label">Nom</label>
+              <input type="text" class="form-control" id="lastname" disabled readonly>
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label">Adresse Email</label>
+              <input type="email" class="form-control" id="email" disabled readonly>
+            </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label">Téléphone (GSM)</label>
+              <input type="tel" class="form-control" id="phone" disabled readonly>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2 : Détails de la prestation -->
+      <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+          <h4 class="card-title mb-4"> <i class="bi bi-geo-alt"></i> Lieu et date de la prestation</h4>
+          
+          <div class="mb-3">
+            <label for="address" class="form-label">Adresse de livraison</label>
+            <input type="text" class="form-control" id="address" placeholder="Ex: 12 rue de la Paix" required>
+          </div>
+
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <label for="city" class="form-label">Ville</label>
+              <input type="text" class="form-control" id="city" placeholder="Ex: Bordeaux" required>
+            </div>
+            
+            <div class="col-md-6">
+              <label for="distanceKm" class="form-label">Distance depuis Bordeaux (en km)</label>
+              <input type="number" class="form-control" id="distanceKm" value="0" min="0" placeholder="0 si Bordeaux">
+              <div class="form-text">Laissez 0 si vous êtes à Bordeaux intra-muros.</div>
+            </div>
+          </div>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="date" class="form-label">Date souhaitée</label>
+              <input type="date" class="form-control" id="date" required>
+            </div>
+            <div class="col-md-6">
+              <label for="time" class="form-label">Heure de livraison</label>
+              <input type="time" class="form-control" id="time" required>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COLONNE DROITE : RÉSUMÉ DE LA COMMANDE -->
+    <div class="col-lg-5">
+      <div class="card shadow-sm border-primary">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0 fs-5"> <i class="bi bi-cart"></i> Résumé de votre commande</h4>
+        </div>
+        
+        <div class="card-body">
+          <h5 id="menu-name" class="fw-bold text-primary mb-1">Chargement du menu...</h5>
+          <p class="text-muted small mb-4">Minimum requis : <span id="menu-min-persons">...</span> personnes</p>
+
+          <div class="mb-4">
+            <label for="people" class="form-label fw-bold">Nombre de convives :</label>
+          
+            <input type="number" class="form-control form-control-lg border-primary" id="people" value="1" min="1">
+            <div id="people-error" class="text-danger small d-none mt-1">Le nombre de personnes est inférieur au minimum requis.</div>
+          </div>
+
+          <hr>
+
+          <!-- Détail des prix -->
+          <div aria-live="polite">
+            <div class="d-flex justify-content-between mb-2">
+              <span>Prix du menu (<span id="unit-price">0</span>€/pers)</span>
+              <span><span id="price">0.00</span> €</span>
+            </div>
+
+            <div class="d-flex justify-content-between mb-2 text-success d-none" id="discount-row">
+              <span>Remise (10% - Groupe)</span>
+              <span>- <span id="discount">0.00</span> €</span>
+            </div>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span>Frais de livraison</span>
+              <span><span id="delivery">0.00</span> €</span>
+            </div>
+
+            <hr>
+
+            <div class="d-flex justify-content-between align-items-center mb-0">
+              <h5 class="mb-0 fw-bold">Total TTC</h5>
+              <h4 class="mb-0 fw-bold text-primary"><span id="total">0.00</span> €</h4>
+            </div>
+          </div>
+
+        </div>
+        <div class="card-footer bg-white border-0 pb-3 pt-0">
+          <button id="validate" class="btn btn-primary w-100 btn-lg">Confirmer ma commande</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

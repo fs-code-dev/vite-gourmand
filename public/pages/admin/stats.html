@@ -1,0 +1,91 @@
+<!-- HERO -->
+<div class="hero-scene text-center text-white py-4">
+  <div class="hero-scene-content">
+    <h1 class="text-white fw-bold">Statistiques Administrateur</h1>
+  </div>
+</div>
+
+<div class="container py-5">
+  
+  <nav class="admin-nav py-3 mb-4 d-flex justify-content-between align-items-center border-bottom">
+    <h2 class="fw-bold mb-0"> 
+      Analyse des Ventes (NoSQL) 
+      <img src="/public/graphic.svg" class="icon-stats ms-2" width="30" alt="stats">
+    </h2>
+    <a href="/adminspace" class="btn btn-outline-secondary btn-sm" data-link>Retour à l'accueil Admin</a>
+  </nav>
+
+  <!-- ================= FILTRES POUR LE CALCUL DU CA ================= -->
+  <div class="card shadow-sm border-0 mb-5 border-start border-4 border-primary">
+    <div class="card-body">
+      <h5 class="card-title fw-bold mb-3">Calcul du Chiffre d'Affaires (CA)</h5>
+      
+      <div class="row g-3 align-items-end">
+        <div class="col-md-3">
+          <label class="form-label small fw-bold">Menu</label>
+          <select id="filterMenu" class="form-select">
+            <option value="all">Tous les menus</option>
+            <option value="Classique">Menu Classique</option>
+            <option value="Noël">Menu Noël</option>
+            <option value="Pâques">Menu Pâques</option>
+            <option value="Événement">Menu Événement</option>
+          </select>
+        </div>
+        
+        <div class="col-md-3">
+          <label class="form-label small fw-bold">Date de début</label>
+          <input type="date" id="filterStartDate" class="form-control">
+        </div>
+        
+        <div class="col-md-3">
+          <label class="form-label small fw-bold">Date de fin</label>
+          <input type="date" id="filterEndDate" class="form-control">
+        </div>
+        
+        <div class="col-md-3">
+          <button id="calculateCABtn" class="btn btn-primary w-100">Calculer le CA</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= KPI (Cartes de résultats) ================= -->
+  <div class="row g-4 mb-5">
+    <div class="col-md-4">
+      <div class="card p-4 text-center shadow-sm border-0 h-100">
+        <h5 class="fw-bold text-muted">Commandes filtrées</h5>
+        <p id="kpiOrders" class="fs-2 fw-bold text-primary mb-0">0</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-4 text-center shadow-sm border-0 h-100">
+        <h5 class="fw-bold text-muted">Chiffre d'Affaires</h5>
+        <p class="fs-2 fw-bold text-success mb-0"><span id="kpiCA">0</span> €</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-4 text-center shadow-sm border-0 h-100">
+        <h5 class="fw-bold text-muted">Top Vente Global</h5>
+        <p class="fs-4 fw-bold text-dark mt-2 mb-0">Menu Classique</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= GRAPHIQUE  ================= -->
+  <div class="card shadow-sm border-0">
+    <div class="card-body p-4">
+      <h5 class="card-title fw-bold text-center mb-4">Comparatif du nombre de commandes par menu</h5>
+      <div style="position: relative; height:400px; width:100%">
+        
+        <canvas id="ordersChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Chargement script -->
+<script type="module" src="/src/assets/js/stats.js"></script>

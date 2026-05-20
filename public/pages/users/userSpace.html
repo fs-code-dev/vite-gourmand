@@ -1,0 +1,198 @@
+<div class="hero-scene text-center text-white py-5">
+  <div class="hero-scene-content">
+    <h1 class="fw-bold text-white">Mon compte utilisateur</h1>
+  </div>
+</div>
+
+<div class="container py-5">
+
+  <!-- ================= MES COMMANDES ================= -->
+  <h2 class="mb-4"> <i class="bi bi-box-fill"></i> Mes commandes</h2>
+
+  <div class="card shadow-sm border-0 mb-5">
+    <div class="card-body table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>N°</th>
+            <th>Menu</th>
+            <th>Date prévue</th>
+            <th>Statut</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- COMMANDE EN ATTENTE  -->
+          <tr>
+            <td class="fw-bold">#2024</td>
+            <td>Menu classique</td>
+            <td>12/04/2026 - 20h00</td>
+            <td><span class="badge bg-warning text-dark">En attente</span></td>
+            <td>
+              <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-outline-primary">Modifier</button>
+                <button class="btn btn-sm btn-outline-danger">Annuler</button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- COMMANDE ACCEPTÉE / EN COURS (Suivi) -->
+          <tr>
+            <td class="fw-bold">#1015</td>
+            <td>Menu Événement</td>
+            <td>10/04/2026 - 19h30</td>
+            <td><span class="badge bg-info">Acceptée</span></td>
+            <td>
+            
+              <button class="btn btn-sm btn-primary">Voir le suivi</button>
+            </td>
+          </tr>
+
+          <!-- COMMANDE TERMINÉE (Avis) -->
+          <tr>
+            <td class="fw-bold">#0900</td>
+            <td>Menu Pâques</td>
+            <td>08/04/2026 - 12h00</td>
+            <td><span class="badge bg-success">Terminée</span></td>
+            <td>
+            
+              <button class="btn btn-sm btn-success">Donner un avis</button>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <!-- ================= SUIVI DE COMMANDE ================= -->
+ 
+  <section class="tracking-container card shadow-sm border-0 p-4 mb-5 border-start border-4 border-info">
+    <h3 class="mb-1"> <i class="bi bi-geo-alt-fill"></i> Suivi de la commande #1018</h3>
+    <p class="text-muted small mb-4">Dernière mise à jour : 08/04 à 12:45</p>
+    
+    
+    <div class="progress-container position-relative py-3">
+      <div class="progress" style="height: 4px;">
+        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+
+      <div class="d-flex justify-content-between text-center mt-3 position-relative">
+        
+        <div class="step text-success">
+          <div class="fs-4 mb-1"><i class="bi bi-check-circle"></i></div>
+          <p class="fw-bold mb-0 small">Reçue</p>
+          <span class="text-muted" style="font-size: 0.75rem;">10/04 - 09h00</span>
+        </div>
+
+        <div class="step text-success">
+          <div class="fs-4 mb-1"><i class="bi bi-check-circle"></i></div>
+          <p class="fw-bold mb-0 small">Acceptée</p>
+          <span class="text-muted" style="font-size: 0.75rem;">10/04 - 10h15</span>
+        </div>
+
+        <div class="step text-primary">
+          <div class="fs-4 mb-1"><i class="bi bi-magic"></i></div>
+          <p class="fw-bold mb-0 small">Préparation</p>
+          <span class="text-muted" style="font-size: 0.75rem;">10/04 - 12h45</span>
+        </div>
+
+        <div class="step text-muted opacity-50">
+          <div class="fs-4 mb-1"><i class="bi bi-truck-flatbed"></i></div>
+          <p class="fw-bold mb-0 small">Livraison</p>
+          <span style="font-size: 0.75rem;">À venir</span>
+        </div>
+
+        <div class="step text-muted opacity-50">
+          <div class="fs-4 mb-1"><i class="bi bi-box-fill"></i></div>
+          <p class="fw-bold mb-0 small">Livrée</p>
+          <span style="font-size: 0.75rem;">À venir</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-4 mb-0 small"> <i class="bi bi-envelope-fill"></i>
+       Vous recevrez un email lorsque votre commande sera terminée.
+    </div>
+  </section>
+
+  <!-- ================= LAISSER UN AVIS ================= -->
+
+  <div class="card shadow-sm border-0 p-4 mb-5 border-start border-4 border-success">
+    <h3 class="mb-3"> <i class="bi bi-star-fill text-warning"></i> Laissez-nous votre avis (Commande #0900)</h3>
+    
+ 
+    <form id="reviewForm">
+      <div class="mb-3">
+        <label class="form-label fw-bold">Votre note</label>
+        <div class="stars fs-4 text-warning">
+         
+          <input type="radio" id="star5" name="rating" value="5" class="d-none" required>
+          <label for="star5" class="cursor-pointer">★</label>
+          <input type="radio" id="star4" name="rating" value="4" class="d-none">
+          <label for="star4" class="cursor-pointer">★</label>
+          <input type="radio" id="star3" name="rating" value="3" class="d-none">
+          <label for="star3" class="cursor-pointer">★</label>
+          <input type="radio" id="star2" name="rating" value="2" class="d-none">
+          <label for="star2" class="cursor-pointer">★</label>
+          <input type="radio" id="star1" name="rating" value="1" class="d-none">
+          <label for="star1" class="cursor-pointer">★</label>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="reviewComment" class="form-label fw-bold">Votre commentaire</label>
+       
+        <textarea id="reviewComment" class="form-control" rows="3" placeholder="Qu'avez-vous pensé de ce menu ?" required></textarea>
+      </div>
+
+      <div class="text-end">
+        <button type="submit" class="btn btn-success">Envoyer mon avis</button>
+      </div>
+    </form>
+  </div> 
+
+  <!-- ================= GESTION DU COMPTE ================= -->
+  <hr class="my-5">
+
+  <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+  
+    <a href="/modifyUserInfo" class="btn btn-outline-primary" data-link>Modifier mes informations personnelles</a>
+    
+     <button class="btn btn-outline-danger"
+        data-bs-toggle="modal"
+        data-bs-target="#deleteAccount">
+  Supprimer mon compte
+</button>
+  </div>
+<div class="modal fade" id="deleteAccount" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmer la suppression</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <p> <i class="bi bi-exclamation-triangle-fill text-warning"></i> Cette action est irréversible.</p>
+        <p>Voulez-vous vraiment supprimer votre compte ?</p>
+
+        <input type="password" class="form-control" placeholder="Mot de passe">
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">
+          Annuler
+        </button>
+
+        <button class="btn btn-danger">
+          Supprimer définitivement
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -138,6 +138,7 @@ Ce projet met en avant des compétences en développement web front-end et back-
 ### 8.2 Déploiement
 
 * Lien de l’application en ligne (front-end et/ou back-end)
+Netlify : cozy-cascaron-4c1a53.netlify.app
 
 ### 8.3 Outil de gestion de projet
 
