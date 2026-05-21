@@ -33,6 +33,7 @@ if (signupForm) {
     passwordError.classList.add("d-none");
 
     alert("Compte créé avec succès !");
+ 
     window.history.pushState({}, "", "/signin");
     window.dispatchEvent(new PopStateEvent("popstate"));
   });
@@ -45,18 +46,48 @@ if (signinForm) {
   signinForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    const emailInput = document.getElementById("EmailInput") || document.getElementById("email");
+    const passwordInput = document.getElementById("PasswordInput") || document.getElementById("password");
+    
+    const email = emailInput ? emailInput.value.trim() : "";
+    const password = passwordInput ? passwordInput.value : "";
+
+    // SIMULATION : Connexion de l'Administrateur
+    if (email === "admin@vitegourmand.fr" || email === "admin@vite-gourmand.fr") {
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          id: 1,
+          firstname: "Directeur",
+          lastname: "Admin",
+          email: email,
+          phone: "0561000000",
+          role: "admin"
+        })
+      );
+      alert("Connexion réussie en tant qu'Administrateur !");
+      
+      window.history.pushState({}, "", "/adminSpace"); 
+      window.dispatchEvent(new PopStateEvent("popstate"));
+      return;
+    }
+
+    // Connexion par défaut pour le Client de Test
     localStorage.setItem(
       "user",
       JSON.stringify({
+        id: 2,
         firstname: "User",
         lastname: "Test",
-        email: "user@test.fr",
+        email: email || "user@test.fr",
         phone: "0600000000",
+        role: "client"
       })
     );
 
     alert("Connexion réussie !");
-    window.history.pushState({}, "", "/userspace");
+   
+    window.history.pushState({}, "", "/userSpace");
     window.dispatchEvent(new PopStateEvent("popstate"));
   });
 }
@@ -90,7 +121,8 @@ if (editPasswordForm) {
     passwordError.classList.add("d-none");
 
     alert("Mot de passe modifié !");
-    window.history.pushState({}, "", "/userspace");
+    
+    window.history.pushState({}, "", "/userSpace");
     window.dispatchEvent(new PopStateEvent("popstate"));
   });
 }
@@ -102,8 +134,21 @@ if (modifyUserInfoForm) {
   modifyUserInfoForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    const currentUser = JSON.parse(localStorage.getItem("user")) || {};
+    
+    const fInput = document.getElementById("firstname");
+    const lInput = document.getElementById("lastname");
+    const pInput = document.getElementById("phone");
+
+    if (fInput) currentUser.firstname = fInput.value;
+    if (lInput) currentUser.lastname = lInput.value;
+    if (pInput) currentUser.phone = pInput.value;
+
+    localStorage.setItem("user", JSON.stringify(currentUser));
+
     alert("Informations mises à jour !");
-    window.history.pushState({}, "", "/userspace");
+    
+    window.history.pushState({}, "", "/userSpace");
     window.dispatchEvent(new PopStateEvent("popstate"));
   });
 }
