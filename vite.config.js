@@ -21,7 +21,7 @@ export default defineConfig({
         signup: resolve(__dirname, 'src/pages/users/signup.html'),
         userSpace: resolve(__dirname, 'src/pages/users/userSpace.html'),
         editPassword: resolve(__dirname, 'src/pages/users/editPassword.html'),
-        modifyUserinfo: resolve(__dirname, 'src/pages/users/modifyUserinfo.html'),
+        modifyUserInfo: resolve(__dirname, 'src/pages/users/modifyUserInfo.html'),
         adminSpace: resolve(__dirname, 'src/pages/admin/adminSpace.html'),
         stats: resolve(__dirname, 'src/pages/admin/stats.html'),
         usersHTML: resolve(__dirname, 'src/pages/admin/users.html'),
