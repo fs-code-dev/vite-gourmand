@@ -48,9 +48,9 @@ if (signinForm) {
     localStorage.setItem(
       "user",
       JSON.stringify({
-        firstname: "Lya",
+        firstname: "User",
         lastname: "Test",
-        email: "lya@test.fr",
+        email: "user@test.fr",
         phone: "0600000000",
       })
     );
