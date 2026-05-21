@@ -14,7 +14,7 @@ export const allRoutes = [
   // Menus et Commandes
   new Route("/menus", "Menus", "/src/pages/menus.html", "/src/assets/js/menus.js"),
   new Route("/menusdetail", "Détail du menu", "/src/pages/menus-detail.html", "/src/assets/js/menus-detail.js"),
-  new Route("/order", "Passer une commande", "/src/pages/order.html"),
+  new Route("/order", "Passer une commande", "/src/pages/order.html", "/src/assets/js/order.js"),
 
   // AUTH (Authentification et Espace Client)
   new Route("/signin", "Se connecter", "/src/pages/users/signin.html", "/src/assets/js/auth.js"),
@@ -27,7 +27,7 @@ export const allRoutes = [
   new Route("/employeSpace", "Espace employé", "/src/pages/employe/employeSpace.html", "/src/assets/js/materiel.js"),
 
   // ADMIN
-  new Route("/adminSpace", "Espace administrateur", "/src/pages/admin/adminSpace.html"),
+  new Route("/adminSpace", "Espace administrateur", "/src/pages/admin/adminSpace.html", "/src/assets/js/admin.js"),
   new Route("/admin/users", "Gestion des employés", "/src/pages/admin/users.html", "/src/assets/js/users.js"),
   new Route("/admin/stats", "Statistiques", "/src/pages/admin/stats.html", "/src/assets/js/stats.js"),
 ];
