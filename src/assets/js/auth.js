@@ -128,26 +128,50 @@ if (editPasswordForm) {
 }
 
 // ===== MODIFY USER INFO =====
+
 const modifyUserInfoForm = document.getElementById("modifyUserInfoForm");
 
 if (modifyUserInfoForm) {
+ 
+  const currentUser = JSON.parse(localStorage.getItem("user")) || {};
+  
+  setTimeout(() => {
+    if (document.getElementById("NomInput") && currentUser.lastname) {
+      document.getElementById("NomInput").value = currentUser.lastname;
+    }
+    if (document.getElementById("PrenomInput") && currentUser.firstname) {
+      document.getElementById("PrenomInput").value = currentUser.firstname;
+    }
+    if (document.getElementById("EmailInput") && currentUser.email) {
+      document.getElementById("EmailInput").value = currentUser.email;
+    }
+    if (document.getElementById("GsmInput") && currentUser.phone) {
+      document.getElementById("GsmInput").value = currentUser.phone;
+    }
+  }, 50); 
+
   modifyUserInfoForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const currentUser = JSON.parse(localStorage.getItem("user")) || {};
     
-    const fInput = document.getElementById("firstname");
-    const lInput = document.getElementById("lastname");
-    const pInput = document.getElementById("phone");
+    // Récupération sécurisée des champs (on vérifie qu'ils existent avant de lire leur valeur)
+    const nomField = document.getElementById("NomInput");
+    const prenomField = document.getElementById("PrenomInput");
+    const emailField = document.getElementById("EmailInput");
+    const gsmField = document.getElementById("GsmInput");
 
-    if (fInput) currentUser.firstname = fInput.value;
-    if (lInput) currentUser.lastname = lInput.value;
-    if (pInput) currentUser.phone = pInput.value;
+    if (nomField) currentUser.lastname = nomField.value.trim();
+    if (prenomField) currentUser.firstname = prenomField.value.trim();
+    if (emailField) currentUser.email = emailField.value.trim();
+    if (gsmField) currentUser.phone = gsmField.value.trim();
 
+    // Sauvegarde de l'objet mis à jour dans le localStorage
     localStorage.setItem("user", JSON.stringify(currentUser));
 
-    alert("Informations mises à jour !");
+    alert("Vos informations personnelles ont été mises à jour avec succès ! (Mode Démo).");
     
+    // Redirection vers l'espace client
     window.history.pushState({}, "", "/userSpace");
     window.dispatchEvent(new PopStateEvent("popstate"));
   });
