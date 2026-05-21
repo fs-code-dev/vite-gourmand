@@ -1,15 +1,22 @@
 import Route from "./Route.js";
 import { allRoutes, websiteName } from "./allRoutes.js";
 
-// Définition de la route de secours en cas de page non trouvée
+
+import { initMenus } from "../assets/js/menus.js";
+import { initMenusDetail } from "../assets/js/menus-detail.js";
+import { initAuth } from "../assets/js/auth.js";
+import { initUserSpace } from "../assets/js/userSpace.js";
+import { initMateriel } from "../assets/js/materiel.js";
+import { initUsers } from "../assets/js/users.js";
+import { initStats } from "../assets/js/stats.js";
+import { initOrder } from "../assets/js/order.js";
+
 const route404 = new Route("/404", "Page introuvable", "/src/pages/404.html");
 
-// Fonction pour trouver la route correspondant à une URL donnée
 const getRouteByUrl = (url) => {
   return allRoutes.find(route => route.url === url) || route404;
 };
 
-// Fonction principale pour charger le contenu de la page en fonction de la route
 export const LoadContentPage = async () => {
   const path = window.location.pathname;
   const actualRoute = getRouteByUrl(path);
@@ -27,29 +34,22 @@ export const LoadContentPage = async () => {
 
     if (actualRoute.pathJS) {
       const scriptName = actualRoute.pathJS.replace("/src/assets/js/", "");
-      
-      try {
-        const module = await import(`../assets/js/${scriptName}`);
-        
-        const functionName = `init${scriptName.replace(".js", "").charAt(0).toUpperCase() + scriptName.replace(".js", "").slice(1)}`;
-      
-        if (module[functionName]) {
-          module[functionName]();
-        } else if (module.init) {
-          module.init();
-        }
-      } catch (err) {
-        console.error(`Impossible de charger le module JS : ${scriptName}`, err);
-      }
+
+      if (scriptName === "menus.js") initMenus();
+      else if (scriptName === "menus-detail.js") initMenusDetail();
+      else if (scriptName === "auth.js") initAuth();
+      else if (scriptName === "userSpace.js") initUserSpace();
+      else if (scriptName === "materiel.js") initMateriel();
+      else if (scriptName === "users.js") initUsers();
+      else if (scriptName === "stats.js") initStats();
+      else if (scriptName === "order.js") initOrder();
     }
 
     window.scrollTo(0, 0);
-   
     document.title = actualRoute.title + " - " + websiteName;
 
   } catch (error) {
     console.error("Erreur de routage :", error);
-
     document.getElementById("app").innerHTML = `
       <div class="container text-center mt-5">
         <h1 class="text-danger">Oups, une erreur est survenue !</h1>
@@ -60,10 +60,8 @@ export const LoadContentPage = async () => {
   }
 };
 
-// Navigation SPA
 document.addEventListener("click", e => {
   const link = e.target.closest("a");
-
   if (link && link.matches("[data-link]")) {
     e.preventDefault();
     window.history.pushState({}, "", link.href);
