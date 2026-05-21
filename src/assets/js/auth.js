@@ -130,87 +130,45 @@ if (editPasswordForm) {
 }
 
 // ===== MODIFY USER INFO =====
-
-const appContainer = document.getElementById("app"); 
-
-if (window.location.pathname === "/modifyUserInfo" || window.location.hash === "#modifyUserInfo") {
-  if (appContainer) {
-    appContainer.innerHTML = `
-      <div class="hero-scene text-center text-white bg-dark py-5">
-        <div class="hero-scene-content"><h1 class="fw-bold">Mes informations</h1></div>
-      </div>
-      <div class="container py-5" style="max-width: 800px;">
-        <form id="modifyUserInfoForm" class="card shadow-sm border-0 p-4 mb-4 border-top border-4 border-primary">
-          <div class="row g-3">
-            <h5 class="fw-bold mb-3 border-bottom pb-2">Identité & Contact</h5>
-            <div class="col-md-6">
-              <label for="NomInput" class="form-label fw-bold">Nom</label>
-              <input type="text" class="form-control" id="NomInput" placeholder="Votre nom" required>
-            </div>
-            <div class="col-md-6">
-              <label for="PrenomInput" class="form-label fw-bold">Prénom</label>
-              <input type="text" class="form-control" id="PrenomInput" placeholder="Votre prénom" required>
-            </div>
-            <div class="col-md-6">
-              <label for="EmailInput" class="form-label fw-bold">Email</label>
-              <input type="email" class="form-control" id="EmailInput" required>
-            </div>
-            <div class="col-md-6">
-              <label for="GsmInput" class="form-label fw-bold">Téléphone (GSM)</label>
-              <input type="tel" class="form-control" id="GsmInput" required>
-            </div>
-            <h5 class="fw-bold mb-3 mt-4 border-bottom pb-2">Adresse de livraison par défaut</h5>
-            <div class="col-12">
-              <label for="inputAddress" class="form-label fw-bold">Adresse</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="Numéro, nom de rue" required>
-            </div>
-            <div class="col-md-6">
-              <label for="inputCity" class="form-label fw-bold">Ville</label>
-              <input type="text" class="form-control" id="inputCity" required>
-            </div>
-            <div class="col-md-6">
-              <label for="inputState" class="form-label fw-bold">Région</label>
-              <select id="inputState" class="form-select" required>
-                <option value="" selected disabled>Choisissez...</option>
-                <option value="OCC">Occitanie</option>
-                <option value="Autre">Autres</option>
-              </select>
-            </div>
-            <div class="col-12 mt-4">
-              <button type="submit" class="btn btn-primary w-100">Enregistrer les modifications</button>
-            </div>
-          </div>
-        </form>
-        <div class="d-flex justify-content-between pt-3 border-top">
-          <a href="/userSpace" class="text-decoration-none">Retour à mon espace</a>
-        </div>
-      </div>
-    `;
-  }
-}
-
-
 const modifyUserInfoForm = document.getElementById("modifyUserInfoForm");
+
 if (modifyUserInfoForm) {
   const currentUser = JSON.parse(localStorage.getItem("user")) || {};
   
-  if (document.getElementById("NomInput") && currentUser.lastname) document.getElementById("NomInput").value = currentUser.lastname;
-  if (document.getElementById("PrenomInput") && currentUser.firstname) document.getElementById("PrenomInput").value = currentUser.firstname;
-  if (document.getElementById("EmailInput") && currentUser.email) document.getElementById("EmailInput").value = currentUser.email;
-  if (document.getElementById("GsmInput") && currentUser.phone) document.getElementById("GsmInput").value = currentUser.phone;
+  // Pré-remplissage automatique des champs au chargement de la page
+  if (document.getElementById("NomInput") && currentUser.lastname) {
+    document.getElementById("NomInput").value = currentUser.lastname;
+  }
+  if (document.getElementById("PrenomInput") && currentUser.firstname) {
+    document.getElementById("PrenomInput").value = currentUser.firstname;
+  }
+  if (document.getElementById("EmailInput") && currentUser.email) {
+    document.getElementById("EmailInput").value = currentUser.email;
+  }
+  if (document.getElementById("GsmInput") && currentUser.phone) {
+    document.getElementById("GsmInput").value = currentUser.phone;
+  }
 
+  // Interception de la soumission pour simuler la sauvegarde en local
   modifyUserInfoForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const currentUser = JSON.parse(localStorage.getItem("user")) || {};
-    
-    if (document.getElementById("NomInput")) currentUser.lastname = document.getElementById("NomInput").value.trim();
-    if (document.getElementById("PrenomInput")) currentUser.firstname = document.getElementById("PrenomInput").value.trim();
-    if (document.getElementById("EmailInput")) currentUser.email = document.getElementById("EmailInput").value.trim();
-    if (document.getElementById("GsmInput")) currentUser.phone = document.getElementById("GsmInput").value.trim();
 
+    const nomField = document.getElementById("NomInput");
+    const prenomField = document.getElementById("PrenomInput");
+    const emailField = document.getElementById("EmailInput");
+    const gsmField = document.getElementById("GsmInput");
+
+    if (nomField) currentUser.lastname = nomField.value.trim();
+    if (prenomField) currentUser.firstname = prenomField.value.trim();
+    if (emailField) currentUser.email = emailField.value.trim();
+    if (gsmField) currentUser.phone = gsmField.value.trim();
+
+   
     localStorage.setItem("user", JSON.stringify(currentUser));
+
     alert("Vos informations personnelles ont été mises à jour avec succès ! (Mode Démo).");
     
+    // Redirection fluide
     window.history.pushState({}, "", "/userSpace");
     window.dispatchEvent(new PopStateEvent("popstate"));
   });
