@@ -1,3 +1,5 @@
+export function initUserSpace() {
+  
 const user = JSON.parse(localStorage.getItem("user"));
 
 if (!user) {
@@ -8,4 +10,5 @@ if (!user) {
 const title = document.querySelector("h1");
 if (title && user) {
   title.textContent = `Mon compte utilisateur - ${user.firstname}`;
+}
 }

@@ -25,24 +25,26 @@ export const LoadContentPage = async () => {
     const app = document.getElementById("app");
     app.innerHTML = html;
 
-    // Suppression des anciens scripts liés à la page précédente (s'ils existent) pour éviter les conflits et doublons
-    document.querySelectorAll("script[data-spa]").forEach(s => s.remove());
-
-    // CHARGEMENT DU SCRIPT SPÉCIFIQUE À LA PAGE (s'il existe)
     if (actualRoute.pathJS) {
-      const newScript = document.createElement("script");
-      newScript.type = "module";
-      newScript.src = actualRoute.pathJS;
-
-      // Attribut personnalisé pour identifier les scripts chargés via le routeur (et les supprimer ensuite)
-      newScript.setAttribute("data-spa", "true");
-
-      document.body.appendChild(newScript);
+      const scriptName = actualRoute.pathJS.replace("/src/assets/js/", "");
+      
+      try {
+        const module = await import(`../assets/js/${scriptName}`);
+        
+        const functionName = `init${scriptName.replace(".js", "").charAt(0).toUpperCase() + scriptName.replace(".js", "").slice(1)}`;
+      
+        if (module[functionName]) {
+          module[functionName]();
+        } else if (module.init) {
+          module.init();
+        }
+      } catch (err) {
+        console.error(`Impossible de charger le module JS : ${scriptName}`, err);
+      }
     }
 
-    // Scroll en haut de la page à chaque chargement et mise à jour du titre
     window.scrollTo(0, 0);
-    // Mise à jour du titre de la page
+   
     document.title = actualRoute.title + " - " + websiteName;
 
   } catch (error) {

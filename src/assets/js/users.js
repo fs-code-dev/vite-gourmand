@@ -1,3 +1,5 @@
+export function initUsers() {
+  
 const createEmployeeForm = document.getElementById("createEmployeeForm");
 
 if (createEmployeeForm) {
@@ -24,4 +26,5 @@ if (createEmployeeForm) {
     // Reset formulaire
     newForm.reset();
   });
+}
 }

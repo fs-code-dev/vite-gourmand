@@ -1,3 +1,5 @@
+export function initAuth() {
+
 const passwordRegex =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$/;
 
@@ -104,4 +106,5 @@ if (modifyUserInfoForm) {
     window.history.pushState({}, "", "/userspace");
     window.dispatchEvent(new PopStateEvent("popstate"));
   });
+}
 }

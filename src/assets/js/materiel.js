@@ -1,3 +1,5 @@
+export function initMateriel() {
+  
 function initStatusSelects() {
   document.querySelectorAll('.statut-select').forEach(select => {
 
@@ -21,3 +23,5 @@ function initStatusSelects() {
 }
 
 initStatusSelects();
+
+}

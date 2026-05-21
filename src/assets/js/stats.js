@@ -1,3 +1,5 @@
+export function initStats() {
+  
 let myChart = null; 
 
 // SIMULATION DES DONNÉES NoSQL
@@ -89,4 +91,5 @@ if (btn) {
   // Remplacement pour éviter les doublons liés au routeur
   btn.replaceWith(btn.cloneNode(true));
   document.getElementById('calculateCABtn').addEventListener('click', calculateCA);
+}
 }

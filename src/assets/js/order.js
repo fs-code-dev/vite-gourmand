@@ -1,3 +1,5 @@
+export function initOrder() {
+  
 const user = JSON.parse(localStorage.getItem("user"));
 const menu = JSON.parse(localStorage.getItem("selectedMenu"));
 
@@ -112,4 +114,5 @@ if (!user) {
     localStorage.removeItem("selectedMenu");
     redirect("/userSpace");
   });
+}
 }

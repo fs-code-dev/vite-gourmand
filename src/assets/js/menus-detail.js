@@ -1,5 +1,6 @@
 import { menus } from "./menus-data.js"; 
-
+export function initMenusDetail() {
+  
 const params = new URLSearchParams(window.location.search);
 const id = parseInt(params.get("id"), 10);
 
@@ -63,4 +64,5 @@ if (orderBtn) {
     window.history.pushState({}, "", "/order");
     window.dispatchEvent(new PopStateEvent("popstate"));
   });
+}
 }
