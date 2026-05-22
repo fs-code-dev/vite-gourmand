@@ -1,4 +1,4 @@
-import{menus as e}from"./scriptMenusData-CeHEviUz.js";function t(){function t(e){let t=document.getElementById(`menusContainer`);t&&(t.innerHTML=e.map(e=>`
+import{menus as e}from"./scriptMenusData-Chkgk4wx.js";function t(){function t(e){let t=document.getElementById(`menusContainer`);t&&(t.innerHTML=e.map(e=>`
       <div class="col-md-4 mb-4">
         <div class="card h-100 shadow-sm border-0 border-bottom border-4 border-primary">
           <img src="${e.image}" class="card-img-top menu-img" alt="${e.title}" style="height: 200px; object-fit: cover;">
