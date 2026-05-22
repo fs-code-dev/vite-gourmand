@@ -1,3 +1,5 @@
+import { LoadContentPage } from "../../router.js";
+
 export function initAuth() {
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$/;
 
@@ -57,7 +59,7 @@ export function initAuth() {
         
         alert("Connexion réussie (Espace Administration).");
         window.history.pushState({}, "", "/adminSpace"); 
-        window.dispatchEvent(new PopStateEvent("popstate"));
+        LoadContentPage()
         return;
       }
 
@@ -74,7 +76,7 @@ export function initAuth() {
         
         alert("Connexion réussie (Espace Employé).");
         window.history.pushState({}, "", "/employeSpace"); 
-        window.dispatchEvent(new PopStateEvent("popstate"));
+        LoadContentPage()
         return;
       }
 
@@ -90,8 +92,8 @@ export function initAuth() {
         }));
 
         alert("Connexion réussie !");
-        window.history.history.pushState({}, "", "/userSpace");
-        window.dispatchEvent(new PopStateEvent("popstate"));
+        window.history.pushState({}, "", "/userSpace");
+        LoadContentPage();
       } else {
         alert("Identifiants invalides pour la démo.");
       }
