@@ -1,0 +1,1 @@
+function e(){let e=JSON.parse(localStorage.getItem(`user`));e||(window.history.pushState({},``,`/signin`),window.dispatchEvent(new PopStateEvent(`popstate`)));let t=document.querySelector(`h1`);t&&e&&(t.textContent=`Mon compte utilisateur - ${e.firstname}`)}export{e as initUserSpace};

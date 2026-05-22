@@ -1,0 +1,88 @@
+<!-- HERO -->
+<div class="hero-scene text-center text-white py-4">
+  <div class="hero-scene-content">
+    <h1 class="text-white fw-bold">Statistiques</h1>
+  </div>
+</div>
+
+<div class="container py-5">
+  
+  <nav class="admin-nav py-3 mb-4 d-flex justify-content-between align-items-center border-bottom">
+    <h2 class="fw-bold mb-0"> 
+      Analyse des Ventes (NoSQL) 
+      <img src="data:image/svg+xml,%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Transformed%20by:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20version='1.1'%20id='Layer_1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%20512.005%20512.005'%20xml:space='preserve'%20width='800px'%20height='800px'%20fill='%23000000'%3e%3cg%20id='SVGRepo_bgCarrier'%20stroke-width='0'/%3e%3cg%20id='SVGRepo_tracerCarrier'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cg%20id='SVGRepo_iconCarrier'%3e%3crect%20x='85.893'%20y='272.9'%20style='fill:%23CCCCCC;'%20width='89.244'%20height='176.447'/%3e%3crect%20x='254.327'%20y='172.085'%20width='89.244'%20height='277.282'/%3e%3crect%20x='422.751'%20y='58.649'%20style='fill:%23E21B1B;'%20width='89.244'%20height='390.71'/%3e%3crect%20y='445.356'%20style='fill:%23666666;'%20width='512.005'%20height='8'/%3e%3c/g%3e%3c/svg%3e" class="icon-stats ms-2" width="30" alt="stats">
+    </h2>
+  </nav>
+
+  <!-- ================= FILTRES POUR LE CALCUL DU CA ================= -->
+  <div class="card shadow-sm border-0 mb-5 border-start border-4 border-primary">
+    <div class="card-body">
+      <h5 class="card-title fw-bold mb-3">Calcul du Chiffre d'Affaires (CA)</h5>
+      
+      <div class="row g-3 align-items-end">
+        <div class="col-md-3">
+          <label class="form-label small fw-bold">Menu</label>
+          <select id="filterMenu" class="form-select">
+            <option value="all">Tous les menus</option>
+            <option value="Classique">Menu Classique</option>
+            <option value="Noël">Menu Noël</option>
+            <option value="Pâques">Menu Pâques</option>
+            <option value="Événement">Menu Événement</option>
+          </select>
+        </div>
+        
+        <div class="col-md-3">
+          <label class="form-label small fw-bold">Date de début</label>
+          <input type="date" id="filterStartDate" class="form-control">
+        </div>
+        
+        <div class="col-md-3">
+          <label class="form-label small fw-bold">Date de fin</label>
+          <input type="date" id="filterEndDate" class="form-control">
+        </div>
+        
+        <div class="col-md-3">
+          <button id="calculateCABtn" class="btn btn-primary w-100">Calculer le CA</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= KPI (Cartes de résultats) ================= -->
+  <div class="row g-4 mb-5">
+    <div class="col-md-4">
+      <div class="card p-4 text-center shadow-sm border-0 h-100">
+        <h5 class="fw-bold text-muted">Commandes filtrées</h5>
+        <p id="kpiOrders" class="fs-2 fw-bold text-primary mb-0">0</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-4 text-center shadow-sm border-0 h-100">
+        <h5 class="fw-bold text-muted">Chiffre d'Affaires</h5>
+        <p class="fs-2 fw-bold text-success mb-0"><span id="kpiCA">0</span> €</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-4 text-center shadow-sm border-0 h-100">
+        <h5 class="fw-bold text-muted">Top Vente Global</h5>
+        <p class="fs-4 fw-bold text-dark mt-2 mb-0">Menu Classique</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= GRAPHIQUE  ================= -->
+  <div class="card shadow-sm border-0">
+    <div class="card-body p-4">
+      <h5 class="card-title fw-bold text-center mb-4">Comparatif du nombre de commandes par menu</h5>
+      <div style="position: relative; height:400px; width:100%">
+        
+        <canvas id="ordersChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<a href="/adminSpace" class="btn btn-outline-secondary btn-sm" data-link>Retour à l'accueil Admin</a>

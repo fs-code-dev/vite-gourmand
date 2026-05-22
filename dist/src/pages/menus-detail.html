@@ -1,0 +1,99 @@
+<div class="hero-scene text-center text-white py-5">
+  <div class="hero-scene-content">
+    <h1 class="fw-bold text-white">Détail du menu</h1>
+  </div>
+</div>
+
+<div class="container py-5">
+
+  <!-- BLOC PRINCIPAL -->
+  <div class="row g-4">
+
+    <!-- IMAGES / GALERIE -->
+    <div class="col-md-6">
+      <div class="card border-0 shadow-sm overflow-hidden">
+       
+        <img id="menuImage" src="/assets/img/placeholder.jpg" class="img-fluid" alt="Chargement de l'image...">
+
+        <div class="card-body">
+          <h3 id="menuTitle">Chargement...</h3>
+          <p id="menuDescription" class="text-muted">
+            Chargement de la description...
+          </p>
+
+          <span class="badge bg-dark" id="menuTheme">-</span>
+          <span class="badge bg-success" id="menuRegime">-</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- INFOS -->
+    <div class="col-md-6">
+
+      <div class="card border-0 shadow-sm p-3 mb-3">
+        <h5> <i class="bi bi-currency-euro"></i> Prix</h5>
+        
+        <p id="menuPrice" class="fs-4 text-danger fw-bold">... €</p>
+      </div>
+
+      <div class="card border-0 shadow-sm p-3 mb-3">
+        <h5> <i class="bi bi-people"></i> Personnes minimales</h5>
+        <p id="menuMinPersons">...</p>
+      </div>
+
+      <div class="card border-0 shadow-sm p-3 mb-3">
+        <h5> <i class="bi bi-box2"></i> Stock disponible</h5>
+        <p id="menuStock">...</p>
+      </div>
+
+      <button id="order-btn" class="btn btn-primary w-100">
+        Commander ce menu
+      </button>
+
+    </div>
+  </div>
+
+  <!-- PLATS -->
+  <div class="mt-5">
+
+    <h3>  <i class="bi bi-utensils"></i> Composition du menu</h3>
+
+    <div class="row g-3 mt-2">
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow-sm h-100">
+          <h5>Entrée</h5>
+          <p id="dishEntree" class="fw-bold mb-1">...</p>
+          <small class="text-muted" id="allergenesEntree">Allergènes : ...</small>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow-sm h-100">
+          <h5>Plat</h5>
+          <p id="dishPlat" class="fw-bold mb-1">...</p>
+          <small class="text-muted" id="allergenesPlat">Allergènes : ...</small>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow-sm h-100">
+          <h5>Dessert</h5>
+          <p id="dishDessert" class="fw-bold mb-1">...</p>
+          <small class="text-muted" id="allergenesDessert">Allergènes : ...</small>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="mt-5 mb-5">
+    <div class="alert alert-warning shadow-sm" role="alert">
+      <h5 class="alert-heading"> <i class="bi bi-exclamation-triangle-fill"></i> Informations importantes</h5>
+      <p id="menuConditions" class="mb-0">Chargement des conditions...</p>
+    </div>
+  </div>
+
+</div>
+

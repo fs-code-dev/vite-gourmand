@@ -1,4 +1,4 @@
-import { LoadContentPage } from "../../router.js";
+import { LoadContentPage } from "../../Router/router.js";
 
 export function initAuth() {
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$/;

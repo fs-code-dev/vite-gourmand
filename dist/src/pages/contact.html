@@ -1,0 +1,63 @@
+<div class="hero-scene text-center-white">
+  <div class="hero-scene-content">
+    <h1 class="fw-bold text-white">Contactez-nous</h1>
+  </div>
+</div>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+
+    <div class="col-md-8 col-lg-6">
+
+      <div class="card shadow-sm border-0 p-4">
+
+        <form>
+
+          <!-- OBJET -->
+          <div class="mb-3">
+            <label for="subject" class="form-label">Objet de votre message</label>
+            <select class="form-select" id="subject" required>
+              <option value="" selected disabled>Choisissez un objet</option>
+              <option value="info">Demande d'informations</option>
+              <option value="reclamation">Réclamation</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="test@mail.com"
+              required
+            >
+          </div>
+
+          <!-- MESSAGE -->
+          <div class="mb-3">
+            <label for="message" class="form-label">Saisissez votre message</label>
+            <textarea
+              class="form-control"
+              id="message"
+              rows="5"
+              placeholder="Votre message..."
+              required
+            ></textarea>
+          </div>
+
+          <!-- BUTTON -->
+          <button type="submit" class="btn btn-primary w-100">
+            Envoyer
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
