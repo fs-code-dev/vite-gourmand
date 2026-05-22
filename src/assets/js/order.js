@@ -1,7 +1,7 @@
 export function initOrder() {
   // Données de démo pour l'utilisateur et le menu sélectionné
   if (!localStorage.getItem("user")) {
-    localStorage.setItem("user", JSON.stringify({ id: 1, firstname: "STL", lastname: "Lya", email: "client@test.fr", phone: "0601020304" }));
+    localStorage.setItem("user", JSON.stringify({ id: 1, firstname: "STL", lastname: "Lya", email: "lyastl@test.fr", phone: "0600000000" }));
   }
   if (!localStorage.getItem("selectedMenu")) {
     localStorage.setItem("selectedMenu", JSON.stringify({ id: 1, title: "Menu Terroir Démo", minPersons: 4, price: 15.00 }));
